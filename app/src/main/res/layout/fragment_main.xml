@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/output"
@@ -16,12 +16,11 @@
         android:background="#ff29fff1"
         android:cursorVisible="true"
         android:isScrollContainer="false"
-        android:saveEnabled="false"
+        android:saveEnabled="true"
         android:textAlignment="gravity"
         android:gravity="end"
-        android:enabled="true"
-        android:textIsSelectable="true"
-        android:inputType="number"
+        android:textIsSelectable="false"
+        android:inputType="none"
         android:focusable="true"
         android:elegantTextHeight="true"
         android:editable="true" />
