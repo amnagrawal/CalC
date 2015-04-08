@@ -23,7 +23,8 @@
         android:inputType="none"
         android:focusable="true"
         android:elegantTextHeight="true"
-        android:editable="true" />
+        android:digits="0123456789+-/*"
+        android:editable="false" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -44,6 +45,7 @@
         android:layout_height="wrap_content"
         android:text="@string/divide"
         android:id="@+id/divide"
+        android:tag="operator"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="10dp"
         android:textSize="25dp"
@@ -56,6 +58,7 @@
         android:layout_height="wrap_content"
         android:text="@string/multiply"
         android:id="@+id/multiply"
+        android:tag="operator"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="10dp"
         android:textSize="25dp"
@@ -117,6 +120,7 @@
         android:layout_height="wrap_content"
         android:text="@string/subtract"
         android:id="@+id/subtract"
+        android:tag="operator"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="10dp"
         android:textSize="25dp"
@@ -166,6 +170,7 @@
         android:layout_height="wrap_content"
         android:text="@string/add"
         android:id="@+id/add"
+        android:tag="operator"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="10dp"
         android:textSize="25dp"

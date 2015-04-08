@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+
 /**
  * Created by aman on 30/3/15.
  */
@@ -20,8 +21,6 @@ public class Fragment_main extends Fragment {
             , brackets, toggle_sign;
     private EditText t;
     public InputMethodManager im;
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,14 +40,7 @@ public class Fragment_main extends Fragment {
         b[9] = (Button) rootView.findViewById(R.id.no9);
 
         t = (EditText) rootView.findViewById(R.id.output);
-
-        t.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                im = (InputMethodManager) rootView.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                im.hideSoftInputFromInputMethod(t.getWindowToken(), 0);
-            }
-        });
+        t.setShowSoftInputOnFocus(false);
 
         im = (InputMethodManager) rootView.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         im.hideSoftInputFromInputMethod(t.getWindowToken(), 0);
@@ -135,7 +127,8 @@ public class Fragment_main extends Fragment {
         backsp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                t.getText().delete(t.getSelectionStart()-1, t.getSelectionStart());
+                if(t.getText().length()>0)
+                    t.getText().delete(t.getSelectionStart()-1, t.getSelectionStart());
             }
         });
 
@@ -147,16 +140,58 @@ public class Fragment_main extends Fragment {
             }
         });
 
+        add = (Button) rootView.findViewById(R.id.add);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                t.getText().insert(t.getSelectionStart(), add.getText());
+            }
+        });
 
+        subtract = (Button) rootView.findViewById(R.id.subtract);
+        subtract.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                t.getText().insert(t.getSelectionStart(), subtract.getText());
+            }
+        });
+
+        multiply = (Button) rootView.findViewById(R.id.multiply);
+        multiply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                t.getText().insert(t.getSelectionStart(), multiply.getText());
+            }
+        });
+
+        divide = (Button) rootView.findViewById(R.id.divide);
+        divide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                t.getText().insert(t.getSelectionStart(), divide.getText());
+            }
+        });
+
+        brackets = (Button) rootView.findViewById(R.id.brackets);
+        brackets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String s = String.valueOf(t.getText());
+                if(s.endsWith("+") || s.endsWith("-") || s.endsWith("*") || s.endsWith("/") || s.equals(""))
+                {
+                    t.getText().insert(t.getSelectionStart(), "(");
+                }
+                else
+                    t.getText().insert(t.getSelectionStart(), ")");
+            }
+        });
+        //ScriptEngineManager mgr = new ScriptEngineManager();
         return rootView;
-
-
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //this.setContentView(R.layout.fragment_main)
     }
 }
